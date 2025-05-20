@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ManshVerse Chat</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="icon" href="assets/favicon.ico" type="image/x-icon"> -->
+</head>
+<body>
+    <div class="chat-layout">
+        <!-- Optional Future Sidebar for Servers/Channels -->
+        <aside class="chat-sidebar left-sidebar" id="channels-sidebar" style="display: none;"> <!-- Initially hidden -->
+            <h2>Servers/Channels</h2>
+            <div class="server-icon-list">
+                <!-- <img src="assets/server-icon-default.png" alt="Server 1" class="server-icon active-server"> -->
+                <!-- <img src="assets/another-server.png" alt="Server 2" class="server-icon"> -->
+                <!-- <button class="btn-icon add-server-btn" title="Add Server">+</button> -->
+            </div>
+            <div class="channel-list">
+                <h3># General Text</h3>
+                <ul>
+                    <li class="active-channel"># general-chat</li>
+                    <li># announcements</li>
+                    <li># random</li>
+                </ul>
+                <!-- Voice channels placeholder
+                <h3>🎤 Voice Channels</h3>
+                <ul>
+                    <li>Lobby</li>
+                    <li>Gaming</li>
+                </ul>
+                -->
+            </div>
+            <div class="user-panel-minimal">
+                <img id="sidebar-user-avatar" src="assets/avatar.png" alt="User" class="user-avatar-small">
+                <span id="sidebar-user-name">Username</span>
+                <!-- <button class="btn-icon settings-btn" title="User Settings">⚙️</button> -->
+            </div>
+        </aside>
+
+        <main class="chat-main-content">
+            <header id="chat-header" class="chat-header-bar">
+                <div class="chat-room-info">
+                    <!-- <button id="toggle-sidebar-btn" class="btn-icon" style="margin-right: 15px;">☰</button> For toggling sidebar -->
+                    <h2># General Chat</h2>
+                </div>
+                <div class="user-actions">
+                    <span id="chat-user-displayName" class="user-display-name-header">Loading...</span>
+                    <!-- ADDED PROFILE LINK HERE -->
+                    <a href="profile.html" id="view-profile-link" class="btn-secondary btn-small" style="margin-left: 10px; text-decoration: none;">My Profile</a>
+                    <button id="logout-button" class="btn-secondary btn-small" style="display:none; margin-left: 10px;">Logout</button>
+                </div>
+            </header>
+
+            <div id="messages-list" class="messages-container">
+                <div class="message-placeholder">
+                    <p>Connecting to ManshVerse...</p>
+                </div>
+            </div>
+
+            <footer class="message-input-area">
+                <form id="send-message-form" class="send-message-form-layout">
+                    <input type="text" id="message-input" placeholder="Message #General Chat" autocomplete="off" required>
+                    <button type="submit" class="btn-send" aria-label="Send message">Send</button>
+                </form>
+            </footer>
+        </main>
+
+        <!-- Optional Future Right Sidebar for User List / Friends -->
+        <aside class="chat-sidebar right-sidebar" id="user-actions-sidebar" style="display: none;"> <!-- Initially hidden -->
+            <h2>Friends & Users</h2>
+            <div class="friend-actions">
+                <input type="text" id="add-friend-username-input" placeholder="Enter username to add">
+                <button id="send-friend-request-btn" class="btn-primary btn-small">Add Friend</button>
+            </div>
+            <div id="friend-request-list-pending">
+                <h3>Pending Requests</h3>
+                <ul>
+                    <!-- <li><span>UserXYZ</span> <button class="accept-fr">✔</button> <button class="decline-fr">✖</button></li> -->
+                </ul>
+            </div>
+            <div id="friend-list-online">
+                <h3>Friends Online</h3>
+                <ul id="online-friends-display-list">
+                    <!-- <li>FriendOne (Online) <button class="dm-friend">💬</button></li> -->
+                </ul>
+            </div>
+        </aside>
+
+    </div> <!-- .chat-layout -->
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-analytics-compat.js"></script>
+
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,665 @@
+/* style.css - ManshVerse Complete */
+
+/* Basic Reset & Body Styling */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    margin: 0;
+    padding: 0; /* Body padding to 0, let wrappers handle it */
+    background-color: #1e2124; /* Dark background */
+    color: #dcddde; /* Light text */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+/* Shared Container for Auth & Profile Centering */
+.auth-wrapper, .profile-page-wrapper {
+    display: flex;
+    flex-direction: column; /* for header + main content */
+    align-items: center; /* centers the .container within it if page is wider */
+    flex-grow: 1;
+    width: 100%;
+    padding: 20px; /* Moved body padding here */
+    box-sizing: border-box;
+}
+
+
+.container { /* General container for auth forms */
+    background-color: #282b30;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 420px;
+    margin-bottom: 20px;
+}
+
+h1, h2, h3 {
+    color: #ffffff;
+    text-align: center;
+    margin-top: 0;
+}
+h1 { margin-bottom: 25px;}
+h2 { margin-bottom: 20px;}
+h3 { margin-bottom: 15px;}
+
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #b9bbbe;
+    font-size: 0.9em;
+    font-weight: 500;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea { /* Added textarea */
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    background-color: #202225;
+    border: 1px solid #151618;
+    border-radius: 5px;
+    box-sizing: border-box;
+    color: #dcddde;
+    font-size: 1em;
+    font-family: inherit; /* Make textarea use body font */
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+textarea:focus { /* Added textarea */
+    outline: none;
+    border-color: #e53935;
+    box-shadow: 0 0 0 2px rgba(229, 57, 53, 0.3);
+}
+
+button[type="submit"],
+button {
+    background-color: #e53935; /* Primary Red */
+    color: white;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 500;
+    width: 100%;
+    transition: background-color 0.2s ease-in-out, transform 0.1s ease;
+}
+
+button[type="submit"]:hover,
+button:hover {
+    background-color: #c62828;
+}
+button[type="submit"]:active,
+button:active {
+    transform: scale(0.98);
+}
+button:disabled {
+    background-color: #4f545c;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+
+a {
+    color: #ff4d6d;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+a:hover {
+    color: #ff758f;
+    text-decoration: underline;
+}
+
+/* Error Message Styling */
+.error-message {
+    color: #ff4d6d;
+    background-color: rgba(229, 57, 53, 0.1);
+    border: 1px solid rgba(229, 57, 53, 0.3);
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 0.9em;
+}
+
+/* Basic App Header Styling (Reusable) */
+.app-header {
+    background-color: #202225;
+    padding: 10px 25px; /* Original was 20px for auth-wrapper padding */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%; /* Take full width of its parent */
+    max-width: 1200px; /* Max width for header content */
+    box-sizing: border-box;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    margin-bottom: 20px;
+    flex-shrink: 0;
+    border-radius: 0 0 8px 8px; /* Rounded bottom corners if not full screen */
+}
+.app-header .logo-area {
+    display: flex;
+    align-items: center;
+}
+.app-header .logo-area img {
+    height: 30px;
+    margin-right: 10px;
+}
+.app-header .logo-area h1 {
+    font-size: 1.4em;
+    color: #e53935;
+    margin: 0;
+    text-align: left; /* Override general h1 text-align */
+}
+.main-nav {
+    display: flex;
+    align-items: center;
+}
+.main-nav a {
+    color: #b9bbbe;
+    text-decoration: none;
+    margin-left: 20px;
+    padding: 5px 0;
+    font-weight: 500;
+    position: relative;
+}
+.main-nav a:hover, .main-nav a.active {
+    color: #ffffff;
+}
+.main-nav a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #e53935;
+}
+.btn-small {
+    padding: 6px 12px;
+    font-size: 0.85em;
+    margin-left: 20px;
+    width: auto; /* Override full width */
+}
+.btn-secondary { /* For logout button if not primary red */
+    background-color: #4f545c;
+    color: #dcddde;
+}
+.btn-secondary:hover {
+    background-color: #5c6773;
+}
+
+
+/* Authentication Page Specific Styles */
+.auth-container {
+    /* .container styles are applied */
+}
+.auth-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+.auth-logo {
+    max-width: 100px;
+    margin-bottom: 15px;
+}
+.auth-subtitle {
+    color: #b9bbbe;
+    font-size: 1em;
+    margin-top: -15px;
+    margin-bottom: 20px;
+}
+.auth-form .form-group {
+    margin-bottom: 20px;
+}
+.auth-footer {
+    margin-top: 25px;
+    text-align: center;
+    font-size: 0.9em;
+}
+.auth-footer p {
+    margin-bottom: 8px;
+    color: #72767d;
+}
+.auth-link {
+    font-weight: 500;
+}
+
+/* Chat Page Specific Styles */
+.chat-layout {
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    height: calc(100vh - 40px - 61px - 20px); /* VH - body_padding - header_height - header_margin_bottom */
+    background-color: #282b30;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    overflow: hidden;
+    /* This is applied when .profile-page-wrapper isn't present or different structure.
+       Need to adjust this if both app-header and chat-layout are on same page.
+       For now, assuming chat.html is a dedicated page *without* the .app-header directly in it.
+       If app-header IS in chat.html, then height calculation for .chat-layout will be tricky
+       and should likely be handled by making its parent (.profile-page-wrapper if present) flex-column.
+       Let's assume chat.html is standalone and doesn't have the .app-header from profile.html
+    */
+}
+.chat-main-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #36393f;
+}
+.chat-header-bar { /* Specific header for inside chat view */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #36393f;
+    border-bottom: 1px solid #202225;
+    flex-shrink: 0;
+    min-height: 50px;
+}
+.chat-header-bar .chat-room-info h2 {
+    font-size: 1.1em;
+    margin: 0;
+    color: #ffffff;
+    text-align: left;
+}
+.chat-header-bar .user-actions {
+    display: flex;
+    align-items: center;
+}
+.chat-header-bar .user-display-name-header { /* Name of logged-in user in chat header */
+    color: #b9bbbe;
+    margin-right: 15px;
+    font-weight: 500;
+}
+#logout-button { /* Specifically for the chat page header logout */
+     /* uses .btn-secondary, .btn-small potentially */
+    width: auto;
+}
+
+.messages-container { /* Renamed from #messages-list */
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 20px;
+    background-color: #36393f;
+    display: flex;
+    flex-direction: column;
+}
+.message-placeholder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    color: #72767d;
+    font-style: italic;
+}
+.message-item {
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border-radius: 7px;
+    max-width: 75%;
+    word-wrap: break-word;
+    display: flex;
+    align-items: flex-start;
+    line-height: 1.4;
+}
+.message-item.sent {
+    background-color: #e53935;
+    color: #ffffff;
+    align-self: flex-end;
+    flex-direction: row-reverse;
+}
+.message-item.sent .message-avatar { margin-left: 10px; }
+.message-item.sent strong { color: #f0f0f0; }
+.message-item.sent .timestamp { color: #f5c5c5; }
+
+.message-item.received {
+    background-color: #40444b;
+    color: #dcddde;
+    align-self: flex-start;
+}
+.message-item.received .message-avatar { margin-right: 10px; }
+.message-item.received strong { color: #ffffff; }
+.message-item.received .timestamp { color: #72767d; }
+
+.message-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+.message-content { display: flex; flex-direction: column; }
+.message-item strong { font-size: 0.95em; font-weight: 500; margin-bottom: 3px; }
+.message-item .message-text { font-size: 1em; }
+.message-item .timestamp { font-size: 0.75em; margin-top: 5px; opacity: 0.8; }
+
+.message-input-area {
+    padding: 15px 20px;
+    background-color: #36393f;
+    border-top: 1px solid #202225;
+    flex-shrink: 0;
+}
+.send-message-form-layout { /* Renamed from #send-message-form */
+    display: flex;
+    align-items: center;
+}
+#message-input { /* For chat input */
+    flex-grow: 1;
+    margin-bottom: 0;
+    margin-right: 10px;
+    background-color: #40444b;
+    border: 1px solid #2c2f33;
+    color: #dcddde;
+    border-radius: 8px;
+    padding: 12px 15px;
+    font-size: 1em;
+}
+#message-input::placeholder { color: #72767d; }
+.btn-send {
+    background-color: #e53935;
+    color: white;
+    padding: 10px 15px; /* Adjusted from global button */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+    min-width: 80px;
+    text-align: center;
+    width: auto; /* Override global button width */
+}
+.btn-send:hover { background-color: #c62828; }
+
+
+/* Profile Page Specific */
+.profile-page-wrapper .app-header {
+    /* Uses .app-header styling */
+     border-radius: 8px 8px 0 0; /* Make top corners rounded if profile-page-wrapper has a shadow/border */
+}
+.profile-container { /* Overrides .container */
+    max-width: 800px;
+    margin: 0 auto 20px auto; /* Let .profile-page-wrapper handle overall padding */
+    background-color: #282b30; /* Ensure it's distinct from main dark body */
+}
+.profile-header-section {
+    display: flex;
+    align-items: flex-start;
+    padding-bottom: 25px;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #3a3d42;
+    position: relative;
+}
+.profile-avatar-container { position: relative; margin-right: 25px; }
+.profile-avatar-large {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 3px solid #4f545c;
+    object-fit: cover;
+}
+.edit-avatar-btn {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    background-color: rgba(40, 43, 48, 0.8);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+    line-height: 30px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.edit-avatar-btn:hover { background-color: rgba(64, 68, 75, 0.9); }
+.profile-main-info { flex-grow: 1; }
+.profile-displayName-field, input#profile-displayName-edit { /* Shared styles */
+    font-size: 1.8em;
+    color: #ffffff;
+    margin-bottom: 5px;
+    background: none; /* Transparent for <p>, override for <input> */
+    border: none; /* No border for <p>, override for <input> */
+    padding: 0; /* No padding for <p>, override for <input> */
+}
+h2#profile-displayName { /* For the h2 specifically */
+    text-align: left;
+    margin-top: 10px;
+}
+input#profile-displayName-edit {
+    background-color: #36393f;
+    border: 1px dashed #4f545c;
+    padding: 5px 10px;
+    border-radius: 4px;
+    width: auto;
+    min-width: 200px;
+}
+.profile-username-field, .profile-email-field {
+    color: #b9bbbe;
+    font-size: 0.95em;
+    margin-bottom: 8px;
+}
+.profile-username-field { font-style: italic; }
+.btn-profile-action { /* For edit/save/cancel buttons on profile */
+    margin-left: 10px;
+    padding: 8px 15px;
+    width: auto; /* Override global button */
+}
+.profile-details-section { margin-bottom: 20px; }
+.profile-details-section h3 {
+    color: #b9bbbe;
+    font-size: 1.1em;
+    text-align: left;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #3a3d42;
+}
+#profile-bio-display { /* The <p> tag for displaying bio */
+    color: #dcddde;
+    line-height: 1.6;
+    font-size: 0.95em;
+    min-height: 60px;
+    white-space: pre-wrap; /* Respect newlines in bio */
+}
+#profile-bio-edit { /* The <textarea> for editing bio, styles inherit from global textarea */
+    resize: vertical;
+    min-height: 100px;
+}
+.btn-icon {
+    background: none;
+    border: none;
+    color: #b9bbbe;
+    cursor: pointer;
+    padding: 5px;
+    font-size: 1.2em;
+}
+.btn-icon:hover { color: #ffffff; }
+
+/* For loading divs */
+#profile-loading p {
+    color: #b9bbbe;
+}
+
+/* Add/Ensure these styles are in your main style.css */
+
+/* ... (all existing styles from "Max Upgrade CSS" version) ... */
+
+/* For sidebars if/when they are enabled */
+.chat-sidebar {
+    flex-shrink: 0;
+    width: 240px; /* Default sidebar width */
+    background-color: #202225; /* Darker than main chat area */
+    padding: 15px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Space between sections in sidebar */
+}
+.chat-sidebar.left-sidebar {
+    border-right: 1px solid #1a1b1e;
+}
+.chat-sidebar.right-sidebar {
+    border-left: 1px solid #1a1b1e;
+}
+
+.chat-sidebar h2, .chat-sidebar h3 {
+    font-size: 0.8em;
+    text-transform: uppercase;
+    color: #72767d; /* Discord-like muted heading */
+    margin-top: 0;
+    margin-bottom: 8px;
+    padding-bottom: 5px;
+    /* border-bottom: 1px solid #3a3d42; Optional subtle separator */
+    text-align: left; /* Override global text-align: center for h2 */
+}
+
+.server-icon-list {
+    display: flex;
+    flex-direction: column; /* Or row if you prefer horizontal server icons */
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+.server-icon {
+    width: 48px;
+    height: 48px;
+    background-color: #36393f;
+    border-radius: 50%; /* Fully round for typical server icons */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #dcddde;
+    cursor: pointer;
+    transition: border-radius 0.2s ease, background-color 0.2s ease;
+    object-fit: cover; /* If using actual images */
+}
+.server-icon:hover, .server-icon.active-server {
+    border-radius: 15px; /* Discord squircle effect on hover/active */
+    background-color: #e53935; /* Your accent red */
+}
+.add-server-btn {
+    /* uses .btn-icon if you make it that */
+    font-size: 24px; /* Large plus */
+    color: #43b581; /* Discord green for add */
+    width: 48px;
+    height: 48px;
+    background-color: #36393f;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: border-radius 0.2s ease, background-color 0.2s ease;
+    border: 1px dashed #43b581;
+}
+.add-server-btn:hover {
+    background-color: #43b581;
+    color: #ffffff;
+    border-radius: 15px;
+}
+
+.channel-list ul, #friend-request-list-pending ul, #friend-list-online ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.channel-list li, #friend-request-list-pending li, #friend-list-online li {
+    padding: 8px 10px;
+    color: #b9bbbe; /* Muted text color for channels */
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.15s ease, color 0.15s ease;
+    font-size: 0.95em;
+    display: flex; /* For friend request buttons */
+    justify-content: space-between; /* For friend request buttons */
+    align-items: center; /* For friend request buttons */
+}
+.channel-list li:hover, .channel-list li.active-channel {
+    background-color: #3a3e43c5; /* Slightly transparent dark background on hover */
+    color: #ffffff;
+}
+.channel-list li::before { /* Hash for text channels */
+    content: '# ';
+    color: #72767d;
+}
+
+/* Minimal user panel at bottom of left sidebar */
+.user-panel-minimal {
+    margin-top: auto; /* Pushes to the bottom */
+    padding: 10px;
+    background-color: #18191c; /* Very dark background */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-radius: 4px;
+}
+.user-avatar-small {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.user-panel-minimal #sidebar-user-name {
+    color: #dcddde;
+    font-weight: 500;
+    font-size: 0.9em;
+    flex-grow: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+/* Styles for settings cog, mute, deafen buttons here */
+
+/* Friend Actions in Right Sidebar */
+.friend-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+#add-friend-username-input {
+    /* Uses global input styles, ensure margin-bottom is okay */
+    margin-bottom: 0; /* Override global input margin if inside a flex gap parent */
+}
+#send-friend-request-btn {
+    /* Uses .btn-primary .btn-small */
+    width: 100%; /* Full width within its container */
+}
+#friend-request-list-pending button, #friend-list-online button {
+    padding: 3px 6px;
+    font-size: 0.8em;
+    width: auto; /* Don't take full width */
+    margin-left: 5px;
+}
+.accept-fr { background-color: #43b581; } /* Green */
+.accept-fr:hover { background-color: #389b6f; }
+.decline-fr, .dm-friend { background-color: #747f8d; } /* Gray */
+.decline-fr:hover, .dm-friend:hover { background-color: #5c6773; }
+
+
+/* Toggle Sidebar Button (if you add one) */
+#toggle-sidebar-btn {
+    /* uses .btn-icon from before if you have it */
+    color: #b9bbbe;
+    font-size: 1.5em;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+#toggle-sidebar-btn:hover {
+    color: #ffffff;
+}

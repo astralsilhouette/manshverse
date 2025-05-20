@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - ManshVerse</title>
+    <link rel="stylesheet" href="style.css"> <!-- Your existing styles -->
+</head>
+<body>
+    <div class="container"> <!-- Using the general .container for basic styling -->
+        <h1>Your ManshVerse Profile</h1>
+
+        <div id="profile-status-message">
+            <p>Checking authentication status...</p>
+        </div>
+
+        <div id="user-info-area" style="display: none;">
+            <p><strong>Logged in as:</strong> <span id="profile-page-user-email"></span></p>
+            <p><em>(Full profile editing coming soon!)</em></p>
+        </div>
+
+        <button id="profile-logout-button" class="btn-secondary" style="display:none; margin-top: 20px; width: auto;">Logout</button>
+        <br>
+        <a href="chat.html" style="margin-top: 15px; display: inline-block;">Back to Chat</a>
+    </div>
+
+    <!-- Firebase SDKs (MAKE SURE THESE ARE CORRECT AND LATEST COMPAT VERSIONS) -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-analytics-compat.js"></script>
+    <!-- No Storage SDK needed for this super simple version -->
+
+    <!-- Your app.js script -->
+    <script src="app.js"></script>
+</body>
+</html>
