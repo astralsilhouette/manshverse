@@ -1,0 +1,17 @@
+{
+  "name": "manshverse",
+  "version": "0.0.1",
+  "private": true,
+  "description": "A real-time chat application",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@capacitor/android": "^5.0.0",  // Or your installed version
+    "@capacitor/core": "^5.0.0",      // Or your installed version
+    "firebase": "^9.22.1"             // Or your installed version
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^5.0.0"        // Or your installed version
+  }
+}
